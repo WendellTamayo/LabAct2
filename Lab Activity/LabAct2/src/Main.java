@@ -3,11 +3,6 @@ import java.util.List;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-       // Display a menu with the following choice 1. Add an animal 2. Delete an animal 3. Display all animals 4. Exit
-         // Add an animal: Ask the user to enter the type of animal (cat, dog, or bird) and the name of the animal.
-            // Delete an animal: Ask the user to enter the name of the animal to be deleted.
-            // Display all animals: Display all the animals in the list.
-            // Exit: Exit the program.
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the maximum number of animals: ");
         int maxSize = sc.nextInt();
