@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -7,8 +5,8 @@ public class Main {
         System.out.println("Enter the maximum number of animals: ");
         int maxSize = sc.nextInt();
         ListAnimals animalList = new ListAnimals(maxSize);
-
-        while(true) {
+        boolean exit = false;
+        while(!exit) {
             System.out.println("1. Add new animal");
             System.out.println("2. Search animal");
             System.out.println("3. Delete an animal");
@@ -23,7 +21,7 @@ public class Main {
                     String animalType = sc.next();
                     System.out.println("Enter the name of the animal: ");
                     String animalName = sc.next();
-                    if (count != 0 && animalList.searchByName(animalName) != null) {
+                    if (animalList.searchByName(animalName) != null) {
                         System.out.println("Animal already exists!");
                         break;
                     }
@@ -61,7 +59,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Exiting...");
-                    System.exit(0);
+                    exit = true;
                 default:
                     System.out.println("Invalid choice!");
                     break;
