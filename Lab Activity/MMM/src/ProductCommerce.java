@@ -33,8 +33,7 @@ public class ProductCommerce implements IProduct{
     @Override
     public int buyProduct(String Id, int quantity) {
         for(Product prod : products) {
-            Product result = search(Id);
-            if(result != null) {
+            if (prod.getProdID().equals(Id)) {
                 if(prod.getQuantity() >= quantity) {
                     prod.setQuantity(prod.getQuantity() - quantity);
                     System.out.println("Transaction successful\n");
@@ -48,6 +47,7 @@ public class ProductCommerce implements IProduct{
         }
         return -1;
     }
+
 
     @Override
     public Product search(String Id) {
