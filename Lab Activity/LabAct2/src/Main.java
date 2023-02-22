@@ -26,10 +26,10 @@ public class Main {
                         break;
                     }
                     if (animalType.equalsIgnoreCase("cat")) {
-                        animalList.addAnimal(new Cat(animalName));
+                        System.out.println(animalList.addAnimal(new Cat(animalName)));
                         count++;
                     } else if (animalType.equalsIgnoreCase("fish")) {
-                        animalList.addAnimal(new Fish(animalName));
+                        System.out.println(animalList.addAnimal(new Fish(animalName)));
                         count++;
                     } else {
                         System.out.println("Invalid Animal Type!");
@@ -60,6 +60,7 @@ public class Main {
                 case 5:
                     System.out.println("Exiting...");
                     exit = true;
+                    break;
                 default:
                     System.out.println("Invalid choice!");
                     break;

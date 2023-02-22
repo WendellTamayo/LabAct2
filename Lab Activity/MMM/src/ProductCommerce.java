@@ -5,8 +5,10 @@ public class ProductCommerce implements IProduct{
         products = new Product[max];
     }
     @Override
-    public boolean addProduct(Product p) {
-        if(count < max && search(p.getProdID(), p.getQuantity()) == null) {
+    public boolean addProduct(String id, String name, int quantity, double price) {
+        Product p = new Product(id, name, quantity, price);
+        Product result = search(id);
+        if(count < max && result == null) {
             products[count++] = p;
             return true;
         }
@@ -17,7 +19,7 @@ public class ProductCommerce implements IProduct{
     public boolean deleteProduct(Product p) {
         for(int i = 0; i < count; i++) {
             if(products[i].equals(p)) {
-                for(int j = i; i < count - 1; j++) {
+                for(int j = i; j < count - 1; j++) {
                     products[j] = products[j + 1];
                 }
                 products[count - 1] = null;
@@ -31,25 +33,26 @@ public class ProductCommerce implements IProduct{
     @Override
     public int buyProduct(String Id, int quantity) {
         for(Product prod : products) {
-            if(prod.getProdID().equals(Id)) {
+            Product result = search(Id);
+            if(result != null) {
                 if(prod.getQuantity() >= quantity) {
                     prod.setQuantity(prod.getQuantity() - quantity);
-                    System.out.println("Transaction successful");
+                    System.out.println("Transaction successful\n");
                     return 1;
                 } else {
                     System.out.println("Transaction failed");
+                    System.out.println("Not enough quantity\n");
                     return 0;
                 }
             }
         }
-        System.out.println("Product not found");
         return -1;
     }
 
     @Override
-    public Product search(String Id, int quantity) {
+    public Product search(String Id) {
         for(Product prod : products) {
-            if(prod.getProdID().equals(Id) && prod.getQuantity() >= quantity) {
+            if(prod != null && prod.getProdID().equals(Id)) {
                 return prod;
             }
         }
@@ -61,12 +64,9 @@ public class ProductCommerce implements IProduct{
         for(Product prod : p) {
             int result = buyProduct(prod.getProdID(), prod.getQuantity());
             if (result == -1) {
-                System.out.println("Product not found");
-            } else if (result == 0) {
-                System.out.println("Transaction failed");
-            } else {
-                System.out.println("Transaction successful");
+                System.out.println("Product not found\n");
             }
         }
     }
+
 }

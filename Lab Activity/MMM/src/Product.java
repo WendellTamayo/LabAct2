@@ -52,8 +52,9 @@ public class Product {
             this.price = price;
         }
     }
+    @Override
     public String toString() {
-        return String.format("%s %s %d %.2f", prodID, prodName, quantity, price);
+        return String.format("Product ID: %s \nProduct Name: %s \nProduct Quantity: %d \nProduct Price: %.2f\n", prodID, prodName, quantity, price);
     }
     public boolean equals(Product p) {
         return this.prodID.equals(p.prodID) && this.prodName.equals(p.prodName) && this.quantity == p.quantity && this.price == p.price;
